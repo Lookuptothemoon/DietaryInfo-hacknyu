@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Product Tracker</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        
+        <script type="text/javascript" src="{{ url_for('static', filename = 'quagga/dist/quagga.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename = 'scanner.js') }}"></script>
+        <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/style.css') }}">
+
+        <!-- JavaScript Files -->
+        <!--
+        <script type="text/javascript" src="{{ url_for('static', filename = 'quagga/dist/quagga.js') }}"></script>
+        <script type="text/javascript" src="{{ url_for('static', filename = 'scanner.js') }}"></script>
+        -->
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+
+    </head>
+
+    <body>
+        <div id="all-content">
+            <p id="title">Onest&agrave;</p>
+
+            <div id="scanner-container"></div><br>
+            <button id="scan-btn">Scan</button><br>
+            <!-- Message from Flask -->
+            <p>{{data.name}}</p>
+            <p>{{data.brand}}</p>
+            <p>{{data.ingredients}}</p>
+
+        </div>
+
+    </body>
+</html>
