@@ -25,7 +25,7 @@ def get_barcode():
 			ingredients = data['nf_ingredient_statement']
 			item_info = "Brand: %s\n Name: %s\n Ingredients:%s\n" % (name, brand, ingredients)
 			print("***************************")
-			print(item_info)ter
+			print(item_info)
 			print("***************************")
 
 			item = {
