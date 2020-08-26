@@ -1,4 +1,4 @@
-#Dietary Info Program
+#Dietary Info Program#
 
 ###To Access --> ###
 1. Before you can start this project, create an account at https://www.nutritionix.com/business/api and get your API keys.
