@@ -17,4 +17,4 @@ $ FLASK_APP=productInfo.py flask run
 Copy and paste url into web browser.
 
 Done!
-###**Note: May not give data for product because might be out of database lookups**###
+**Note: May not give data for product because might be out of database lookups**
