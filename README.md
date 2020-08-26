@@ -5,11 +5,16 @@
 <p>
 <pre>
 
+1. Before you can start this project, create an account at https://www.nutritionix.com/business/api and get your API keys.
+
+2. Then, create a config.py file visible to productInfo.py as such:
+nutritionixKey = "enter key here"
+appId = "enter apd id here"
+
+3. After you have completed that step, follow these steps:
 $ cd myproject
 
 $ . venv/bin/activate
-
-$ cd ..
 
 $ export FLASK_ENV=development                              /*puts you in developer mode*/
 
