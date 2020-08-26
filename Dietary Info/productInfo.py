@@ -1,55 +1,44 @@
 from flask import Flask, render_template, request, jsonify, redirect, url_for
 import requests
 import json
+import config
 
 app = Flask(__name__)
 
 @app.route("/", methods=['GET'])
 def index():
-	return render_template('index.html', data=None)
+	return render_template('index.html')
 
 @app.route("/barcode", methods=['GET','POST'])
-def get_barcode():
+def barcode():
 	if request.method == 'POST':
 		barcode = request.form['javascript_data']
 
-		nutritionixKey = "e94199ad7b6a8b0808c66d25cf8ffe62"
-		classid = "a54f164e"
-		product_url = "https://api.nutritionix.com/v1_1/item?appId=%s&appKey=%s&upc=%s" % (classid, nutritionixKey, barcode)
-		#r = requests.get(url=product_url)
+		nutritionixKey = config.nutritionixKey
+		appId = config.appId
+		product_url = "https://api.nutritionix.com/v1_1/item?appId=%s&appKey=%s&upc=%s" % (appId, nutritionixKey, barcode)
 		data = requests.get(product_url).json()
+		#data = {'item_name':'N/A', 'brand_name':'N/A', 'nf_ingredient_statement':'N/A'}
 
+		item_info = ""
+		print("***************************")
 		try:
 			name = data['item_name']
 			brand = data['brand_name']
 			ingredients = data['nf_ingredient_statement']
-			item_info = "Brand: %s\n Name: %s\n Ingredients:%s\n" % (name, brand, ingredients)
-			print("***************************")
+			item_info = "Brand: %s\nName: %s\nIngredients: %s\n" % (name, brand, ingredients)
 			print(item_info)
-			print("***************************")
-
-			item = {
-				'name': name,
-				'brand': brand,
-				'ingredients': ingredients
-			}
-			return render_template('index.html', data=item)
+			return render_template("results.html", hasData=True, data=data)
 		except:
-			print("***************************")
-			print(item_info)
-			print("***************************")
+			print("Item not found!")
+			return render_template("results.html", hasData=False, data="Item not found. Refresh the page and try again!")
 
-			item = {
-				'name': "N/A",
-				'brand': "N/A",
-				'ingredients': "N/A"
-			}
-			return render_template('index.html', data=item)
 	else:
 		return index()
 
 if __name__ == '__main__':
     app.run()
+
 
 
 '''

@@ -1,0 +1,10 @@
+<h1>Results</h1>
+{% if hasData %}
+    <p>Item Name: {{data.item_name}}</p>
+    <p>Brand Name: {{data.brand_name}}</p>
+    <p>Ingredients: {{data.nf_ingredient_statement}}</p>
+{% else %}
+    <p>{{data}}</p>
+{% endif %}
+<br><br>
+<p>Thank you for using Onest&agrave;!</p>
