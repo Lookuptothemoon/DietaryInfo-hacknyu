@@ -10,13 +10,11 @@ appId = "enter app id here"
 ```
 
 3. After you have completed that step, follow these steps:
-'''
+```
 $ source venv/bin/activate
-
 $ export FLASK_ENV=development					//puts you in developer mode
-
 $ FLASK_APP=productInfo.py flask run
-'''
+```
 
 Copy and paste url into web browser.
 
